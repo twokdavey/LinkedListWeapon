@@ -1,5 +1,7 @@
 package PlayerStuff;
 
+import Weapons.SwordClass;
+
 public class CharacterClass {
 
 	// not yet implemented

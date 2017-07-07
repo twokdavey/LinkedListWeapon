@@ -40,7 +40,7 @@ public class Merchant {
 	public void inventoryMenu(HeroClass hero) {
 		boolean shopping = true;
 		while (shopping) {
-			System.out.println("Gold: " + hero.getGold());
+			System.out.println("Gold: " + hero.getBackpack().getGold());
 			System.out.println("Hello traveler, would you like to take a look at my selection?");
 			System.out.println("Player options: 1, 2 ,3, No");
 			System.out.println("Weak Potion: " + potions.getWeakPotionSize() + "Cost: " + WEAK_POTION_PRICE);
@@ -62,24 +62,24 @@ public class Merchant {
 		int newChoice = Integer.parseInt(choice);
 
 		if (newChoice == WEAK_POTION_PRICE) {
-			if (hero.getGold() >= WEAK_POTION_PRICE) {
-				hero.pickUpPotion(1);
-				hero.removeGoldFromBackPack(WEAK_POTION_PRICE);
+			if (hero.getBackpack().getGold() >= WEAK_POTION_PRICE) {
+				hero.getBackpack().getInventory().addPotion(WEAK_POTION_PRICE);
+				hero.getBackpack().removeGold(WEAK_POTION_PRICE);
 
 			} else {
 				System.out.println("Sorry, you seem to be low on gold to afford this...");
 			}
 		} else if (newChoice == NORMAL_POTION_PRICE) {
-			if (hero.getGold() >= NORMAL_POTION_PRICE) {
-				hero.pickUpPotion(NORMAL_POTION_PRICE);
-				hero.removeGoldFromBackPack(NORMAL_POTION_PRICE);
+			if (hero.getBackpack().getGold() >= NORMAL_POTION_PRICE) {
+				hero.getBackpack().getInventory().addPotion(NORMAL_POTION_PRICE);
+				hero.getBackpack().removeGold(NORMAL_POTION_PRICE);
 			} else {
 				System.out.println("Sorry, you seem to be low on gold to afford this...");
 			}
 		} else if (newChoice == STRONG_POTION_PRICE) {
-			if (hero.getGold() >= STRONG_POTION_PRICE) {
-				hero.pickUpPotion(STRONG_POTION_PRICE);
-				hero.removeGoldFromBackPack(STRONG_POTION_PRICE);
+			if (hero.getBackpack().getGold() >= STRONG_POTION_PRICE) {
+				hero.getBackpack().getInventory().addPotion(STRONG_POTION_PRICE);
+				hero.getBackpack().removeGold(STRONG_POTION_PRICE);
 			} else {
 				System.out.println("Sorry, you seem to be low on gold to afford this...");
 			}

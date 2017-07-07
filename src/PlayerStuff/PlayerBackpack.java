@@ -8,6 +8,8 @@ import Inventory.Consumables;
 import Inventory.StrongHealthPotion;
 import Inventory.normalHealthPotion;
 import Inventory.weakPotion;
+import Weapons.Dagger;
+import Weapons.SwordClass;
 
 public class PlayerBackpack {
 	
@@ -21,7 +23,7 @@ public class PlayerBackpack {
 	private Consumables inventory;
 	private Map<Integer,SwordClass> weapons;
 	public PlayerBackpack(){
-		inventory = new Consumables();
+		setInventory(new Consumables());
 		weapons = new HashMap<Integer,SwordClass>();
 		gold=0;
 	}
@@ -51,7 +53,13 @@ public class PlayerBackpack {
 
 
 	public String toString() {
-		return "inventory: \n Weak Potions:" + inventory.getWeakPotionSize() + "\n Normal Potions: " + inventory.getNormalPotionSize()
-				+ "\n String Potions: " + inventory.getStrongPotionSize();
+		return "inventory: \n Weak Potions:" + getInventory().getWeakPotionSize() + "\n Normal Potions: " + getInventory().getNormalPotionSize()
+				+ "\n String Potions: " + getInventory().getStrongPotionSize();
+	}
+	public Consumables getInventory() {
+		return inventory;
+	}
+	public void setInventory(Consumables inventory) {
+		this.inventory = inventory;
 	}
 }

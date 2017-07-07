@@ -143,12 +143,12 @@ public class BattleZone {
 	 */
 	private void receiveReward(HeroClass PersonAttacking, Creatures PersonThatDied) {
 		int gold = PersonThatDied.getGold();
-		PersonAttacking.addGoldToBackpack(gold);
-		System.out.println("Gold rewarded: " + gold + ". Total gold: " + PersonAttacking.getGold());
+		PersonAttacking.getBackpack().addGold(gold);
+		System.out.println("Gold rewarded: " + gold + ". Total gold: " + PersonAttacking.getBackpack().getGold());
 	}
 
 	public void useItem(HeroClass hero) {
-		System.out.println(hero.potionInventory());
+		System.out.println(hero.getBackpack().toString());
 		int choice = scan.nextInt();
 		hero.drinkPotion(choice);
 

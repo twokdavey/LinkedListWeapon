@@ -1,4 +1,4 @@
-package PlayerStuff;
+package Weapons;
 
 import Inventory.Items;
 
