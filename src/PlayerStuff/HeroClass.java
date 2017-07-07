@@ -26,6 +26,4 @@ public class HeroClass extends CharacterClass {
 	public PlayerBackpack getBackpack(){
 		return backpack;
 	}
-
-
 }

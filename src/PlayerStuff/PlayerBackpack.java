@@ -10,30 +10,24 @@ import Inventory.normalHealthPotion;
 import Inventory.weakPotion;
 import Weapons.Dagger;
 import Weapons.SwordClass;
+import Weapons.WeaponList;
 
 public class PlayerBackpack {
-	
-	
+
 	private int weak = 0;
 	private int normal = 0;
-	private int strong = 0; 
+	private int strong = 0;
 	private int gold;
-	
-	private SwordClass sword;
+
+	private WeaponList weaponList;
 	private Consumables inventory;
-	private Map<Integer,SwordClass> weapons;
-	public PlayerBackpack(){
-		setInventory(new Consumables());
-		weapons = new HashMap<Integer,SwordClass>();
-		gold=0;
+
+	public PlayerBackpack() {
+		inventory = new Consumables();
+		weaponList = new WeaponList();
+
+		gold = 0;
 	}
-	public void collectWeapons(){
-		weapons.put(1, new Dagger());
-		SwordClass test = weapons.get(1);
-		test.Description();
-		
-	}
-	
 
 	public int getGold() {
 		return gold;
@@ -42,24 +36,27 @@ public class PlayerBackpack {
 	public void addGold(int addGold) {
 		gold += addGold;
 	}
-	public void removeGold(int removeGold){
-		gold-= removeGold;
-	}
-	public double weaponDamage(){
-		sword = new SwordClass("soulstealer",5.0);
-		double damageAmplifier = sword.getDamage();
-		return damageAmplifier;
+
+	public void removeGold(int removeGold) {
+		gold -= removeGold;
 	}
 
+	public double weaponDamage(int key) {
+		double sword = getWeaponList().getWeapons().get(key).getDamage();
+
+		return sword;
+	}
 
 	public String toString() {
-		return "inventory: \n Weak Potions:" + getInventory().getWeakPotionSize() + "\n Normal Potions: " + getInventory().getNormalPotionSize()
-				+ "\n String Potions: " + getInventory().getStrongPotionSize();
+		return "inventory: \n Weak Potions:" + getInventory().getWeakPotionSize() + "\n Normal Potions: "
+				+ getInventory().getNormalPotionSize() + "\n String Potions: " + getInventory().getStrongPotionSize();
 	}
+
 	public Consumables getInventory() {
 		return inventory;
 	}
-	public void setInventory(Consumables inventory) {
-		this.inventory = inventory;
+
+	public WeaponList getWeaponList() {
+		return weaponList;
 	}
 }

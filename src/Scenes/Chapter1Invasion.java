@@ -63,6 +63,7 @@ public class Chapter1Invasion {
 		delay(1000);
 		System.out.println(
 				"?????????:HEY CATCH! **A young man from behind you in the shadows throws a sword at your feet**");
+		hero.getBackpack().weaponDamage(1);
 		delay(4000);
 		Creatures sludge = new SludgeMonster();
 		battle = new BattleZone();
@@ -92,7 +93,7 @@ public class Chapter1Invasion {
 		scan.nextLine();
 		String choice= scan.nextLine();
 		if(choice.equalsIgnoreCase("yes")){
-			merchant = new Merchant(hero,3,3,3);
+			merchant = new Merchant(hero,3,3,3,1);
 		}
 		System.out.println("Enemy Soldier: STOP RIGHT THERE!");
 		System.out.println("**Enemy approaches you, sword aiming at your chest**");

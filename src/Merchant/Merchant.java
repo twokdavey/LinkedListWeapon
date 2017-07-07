@@ -2,18 +2,26 @@ package Merchant;
 
 import Inventory.Consumables;
 import PlayerStuff.HeroClass;
+import Weapons.SwordClass;
+import Weapons.WeaponList;
+
 import java.util.Scanner;
 
 public class Merchant {
 	Consumables potions;
+	WeaponList weapon;
+	SwordClass weaponForSale;
 	Scanner scan = new Scanner(System.in);
 	private final int WEAK_POTION_PRICE = 1;
 	private final int NORMAL_POTION_PRICE = 2;
 	private final int STRONG_POTION_PRICE = 3;
 
-	public Merchant(HeroClass hero, int weakPotionCount, int normalPotionCount, int strongPotionCount) {
+	public Merchant(HeroClass hero, int weakPotionCount, int normalPotionCount, int strongPotionCount, int weapontype) {
 		potions = new Consumables();
+		weapon = new WeaponList();
 		createInventory(weakPotionCount, normalPotionCount,strongPotionCount);
+		weaponForSale =weapon.getWeapons().get(weapontype);
+		
 		inventoryMenu(hero);
 	}
 	/**
@@ -46,6 +54,7 @@ public class Merchant {
 			System.out.println("Weak Potion: " + potions.getWeakPotionSize() + "Cost: " + WEAK_POTION_PRICE);
 			System.out.println("Normal Potion: " + potions.getNormalPotionSize() + "Cost: " + NORMAL_POTION_PRICE);
 			System.out.println("Strong Potion: " + potions.getStrongPotionSize() + "Cost: " + STRONG_POTION_PRICE);
+			System.out.println(weaponForSale.getName()+": Description:" + weaponForSale.Description()+". Damage: "+weaponForSale.getDamage());
 			String choice = scan.nextLine();
 			shopping =buyPhase(choice, hero);
 
